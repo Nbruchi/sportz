@@ -1,16 +1,5 @@
 import { z } from 'zod';
 
-/** Valid ISO 8601 date/datetime string (parsable by Date). */
-function isValidISODateString(value) {
-  const parsed = Date.parse(value);
-  return Number.isFinite(parsed);
-}
-
-const isoDateStringSchema = z
-  .string()
-  .refine(isValidISODateString, { message: 'Must be a valid ISO date string' });
-
-/** Optional limit: coerced positive integer, max 100. */
 export const listMatchesQuerySchema = z.object({
   limit: z.coerce
     .number()
@@ -41,8 +30,8 @@ export const createMatchSchema = z
     sport: z.string().min(1, { message: 'sport must be non-empty' }),
     homeTeam: z.string().min(1, { message: 'homeTeam must be non-empty' }),
     awayTeam: z.string().min(1, { message: 'awayTeam must be non-empty' }),
-    startTime: isoDateStringSchema,
-    endTime: isoDateStringSchema,
+    startTime: z.iso.datetime(),
+    endTime: z.iso.datetime(),
     homeScore: z.coerce
       .number()
       .int()
