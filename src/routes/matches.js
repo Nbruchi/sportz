@@ -7,6 +7,9 @@ import {
 } from "../validation/matches.js";
 import { getMatchStatus } from "../utils/match-status.js";
 import { desc } from "drizzle-orm";
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
 
 export const matchRouter = Router();
 
