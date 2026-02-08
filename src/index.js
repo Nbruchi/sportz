@@ -1,3 +1,6 @@
+import AgentAPI from "apminsight";
+AgentAPI.config();
+
 import http from "http";
 import express from "express";
 import { attachWebSocketServer } from "./ws/server.js";
