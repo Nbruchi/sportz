@@ -4,6 +4,10 @@ import { desc, eq } from "drizzle-orm";
 import { commentary } from "../db/schema.js";
 import { matchIdParamSchema } from "../validation/matches.js";
 import {
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+
     createCommentarySchema,
     listCommentaryQuerySchema,
 } from "../validation/commentary.js";
